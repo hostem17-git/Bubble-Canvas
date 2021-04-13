@@ -1,6 +1,6 @@
 var canvas = document.querySelector("canvas")
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.height = window.innerHeight-4.5;
 
 var c =  canvas.getContext("2d");
 
@@ -20,7 +20,7 @@ window.addEventListener("touchmove",function(e){
 })
 window.addEventListener("resize",function(){
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.height = window.innerHeight-10;
     init();  
 })
 var maxRadius = 50;
@@ -73,7 +73,7 @@ class Circle{
 var circleArray = [];
 function init(){
     circleArray = [];
-    for(let i = 0;i<200;i++){
+    for(let i = 0;i<250;i++){
         var minRadius = Math.random() * 4 + 1; 
         var x = Math.random()*(window.innerWidth - 2*minRadius);   
         var y = Math.random()*(window.innerHeight - 2*minRadius);
@@ -84,7 +84,7 @@ function init(){
 }
 
 function randColour(){
-    let set = ["#FE0586","#E305E6","#BB12FD","#6805E6","#A62D43","#1F2338","#E00E12","#F2F2F2","#F2F2F2","#D9DAD9"]
+    let set = ["#1F2126","#0B0d0c","FDF5D7","#402401","#581914","#fff"]
     return set[Math.floor(Math.random()*set.length)];
 }
 
@@ -94,7 +94,9 @@ function animate(){
     c.clearRect(0,0,window.innerWidth,window.innerHeight);
     for(let i =0;i<circleArray.length;i++)
         circleArray[i].update();
-    
+    c.font = "96px Georgia";
+    c.fillStyle= "#fff";
+    c.fillText("Welcome!", canvas.width/2 -200, canvas.height/2);
 }
 
 init();
